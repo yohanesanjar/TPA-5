@@ -3,7 +3,7 @@ ToDo - Application dengan sistem login, dibuat menggunakan MongoDB , Express.js 
 # Installation
 ## Download
 > Klik Code --> Download ZIP --> Ekstrak file
-#Jika database tidak bisa digunakan
+# Jika database tidak bisa digunakan
 ## Membuat Database dan mengganti script
 1. Membuat database dengan mongodb
 2. Kemudian copy link database mongodb
