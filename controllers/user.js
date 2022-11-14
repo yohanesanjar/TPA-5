@@ -48,15 +48,15 @@ async function registerUser(req, res) {
 
 async function addTodoUser(req, res) {
     try {
-        let { title, dueDate } = req.body
-        if (title == '' || dueDate == '') {
+        let { title, desc, dueDate } = req.body
+        if (title == '' || desc == '' || dueDate == '') {
             res.render('todo/add', {
-                message: 'Input Title and dueDate!',
+                message: 'Input Title ,desc, and dueDate!',
                 messageClass: 'alert-danger'
             })
             return
         }
-        createTodo(req.user.id, title, dueDate)
+        createTodo(req.user.id, title, desc, dueDate)
         res.redirect('/todo')
     } catch(err) {
         console.log(err)
@@ -83,8 +83,8 @@ async function deleteAllTodoUser(req, res) {
 
 async function editTodoUser(req, res) {
     try {
-        let { title, dueDate, id } = req.body
-        editTodo(req.user.id, req.body.id, title, dueDate)
+        let { title, desc, dueDate, id } = req.body
+        editTodo(req.user.id, req.body.id, title, desc, dueDate)
         res.redirect('/todo')
     } catch (error) {
         console.log(error)
@@ -93,8 +93,8 @@ async function editTodoUser(req, res) {
 
 async function detailTodoUser(req, res) {
     try {
-        let { title, dueDate, id } = req.body
-        detailTodo(req.user.id, req.body.id, title, dueDate)
+        let { title, dueDate, desc, id } = req.body
+        detailTodo(req.user.id, req.body.id, title, desc, dueDate)
         res.redirect('/todo')
     } catch (error) {
         console.log(error)

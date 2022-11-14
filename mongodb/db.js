@@ -78,7 +78,7 @@ async function getTodo(id, idTodo) {
 }
 module.exports.getTodo = getTodo
 
-async function createTodo(id, title, dates) {
+async function createTodo(id, title, desc, dates) {
     const time = moment(Date.now()).format('DD/MM HH:mm:ss')
     let users = await User.findOne({
         _id: id
@@ -87,6 +87,7 @@ async function createTodo(id, title, dates) {
     let obj = {
         _id: new ObjectID(),
         title: title,
+        desc: desc,
         dueDate: dates,
         time: time
     }
@@ -118,13 +119,14 @@ async function deleteTodo(id, idTodo) {
 module.exports.deleteTodo = deleteTodo
 
 
-async function editTodo(id, idTodo, title, dates) {
+async function editTodo(id, idTodo, title, desc, dates) {
     let users = await User.findOne({
         _id: id
     })
     let arr = users.todo
     let index = arr.findIndex(x => x._id == idTodo)
     arr[index].title = title
+    arr[index].desc = desc
     arr[index].dueDate = dates
     User.updateOne({
         _id: id
@@ -136,13 +138,14 @@ async function editTodo(id, idTodo, title, dates) {
 }
 module.exports.editTodo = editTodo
 
-async function detailTodo(id, idTodo, title, dates) {
+async function detailTodo(id, idTodo, title, desc, dates) {
     let users = await User.findOne({
         _id: id
     })
     let arr = users.todo
     let index = arr.finddetail(x => x._id == idTodo)
     arr[index].title = title
+    arr[index].desc = desc
     arr[index].dueDate = dates
 }
 module.exports.detailTodo = detailTodo
